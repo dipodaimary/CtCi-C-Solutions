@@ -11,24 +11,19 @@ struct node{
 	}
 };
 class Solution{
-public:
-	int height(node *node){
-		if(node == NULL){
+	int height(node *root){
+		if(root==NULL)
 			return 0;
-		}
-		return 1+max(height(node->left),height(node->right));
+		return 1+max(height(root->left),height(root->right));
 	}
+public:
 	bool isbalanced(node *root){
-		int lh;
-		int rh;
 		if(root==NULL)
 			return true;
-
-		lh = height(root->left);
-		rh = height(root->right);
+		int lh = height(root->left);
+		int rh = height(root->right);
 		if(abs(lh-rh)<=1 && isbalanced(root->left) && isbalanced(root->right))
 			return true;
-
 		return false;
 	}
 };
